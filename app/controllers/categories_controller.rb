@@ -8,6 +8,6 @@ class CategoriesController < ApplicationController
   def show
   end
 
-  def update
+  def destroy
   end
 end
