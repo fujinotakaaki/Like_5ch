@@ -12,4 +12,24 @@
       }
     }
   }
+  &__block {
+    padding: 30px;
+    margin: 20px 0;
+    background-color: #ccffcc;
+    border: 2px solid #000;
+    border-radius: 8px;
+    &--headline {
+      margin-bottom: 20px;
+    }
+    &--body {
+      font-size: 20px;
+      color: white;
+      background-color: #00BFFF;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    &--carbon {
+      background-color: #eee;
+    }
+  }
 }

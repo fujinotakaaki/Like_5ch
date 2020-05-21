@@ -1,0 +1,5 @@
+<% if @topic.errors.any? %>
+alert("入力にエラーがあります。");
+<% else %>
+window.location.replace("<%= topic_path( @topic ) %>");
+<% end %>

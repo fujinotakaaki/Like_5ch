@@ -13,7 +13,6 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(create_params)
     @topic.save
-    redirect_to topic_path(@topic)
   end
 
   def show
@@ -28,14 +27,25 @@ class TopicsController < ApplicationController
   private
 
   def create_params
-    params.require(:topic).permit(:title, responses_attributes: %i(name body))
+    raw_params = params.require(:topic).permit(
+      :title,
+      responses_attributes: %i(name body),
+      categorizations_attributes: %i(category_id)
+    )
+    if raw_params[:responses_attributes][?0][:token].blank?
+      raw_params[:responses_attributes][?0][:token] = session[:token] ||= SecureRandom.alphanumeric
+    end
+    if raw_params[:responses_attributes][?0][:name].blank?
+      raw_params[:responses_attributes][?0][:name] =  '名無しさん'
+    end
+    raw_params
   end
 
   def search_params
     begin
-    params.require(:search).permit(:keyword)
-  rescue
-    { keyword: "" }
-  end
+      params.require(:search).permit(:keyword)
+    rescue
+      { keyword: "" }
+    end
   end
 end

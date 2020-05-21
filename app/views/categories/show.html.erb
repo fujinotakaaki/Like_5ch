@@ -1,2 +1,18 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="col-md-10 col-md-offset-1">
+  <div class="topics__block">
+    <p class="categories__index--subheadings">
+      <% @topics.each.with_index(1) do |topic, idx| %>
+      <%= link_to "#{idx}: #{topic.title_with_responses_count}", topic_path( topic ) %>
+      <br>
+      <% end %>
+    </p>
+  </div>
+
+  <% @topics.each do |topic| %>
+  <div class="topics__block topics__block--carbon">
+  <%= render 'topics/partial', topic: topic %>
+  </div>
+  <% end %>
+
+  <%= render 'topics/form', topic: @topic, category: @category %>
+</div>

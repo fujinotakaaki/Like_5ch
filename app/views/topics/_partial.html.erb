@@ -1,6 +1,6 @@
 <div class="topics__artticle">
   <h4>
-    <%= link_to "#{topic.title} (#{topic.responses_count})", topic_path( topic ) %>
+    <%= link_to topic.title_with_responses_count, topic_path( topic ) %>
   </h4>
 
   <h5 class="topics__artticle--categories">

@@ -1,5 +1,8 @@
-<div class="col-md-10">
-  <%= @categories.each do |category| %>
-  <%= link_to "#{category.name} (#{category.categorizations_count})", category_path( category ) %>
-  <% end %>
+<div class="col-md-10 col-md-offset-1">
+  <div class="categories__index--bord">
+    <% @categories.each_with_index do |category, i| %>
+    <%= " / " unless i.zero?%>
+    <%= link_to category.name_with_categorizations_count, category_path( category ) %>
+    <% end %>
+  </div>
 </div>
