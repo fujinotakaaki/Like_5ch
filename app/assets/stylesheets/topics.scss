@@ -1,3 +1,15 @@
-// Place all the styles related to the Topics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.topics {
+  &__artticle {
+    padding: 5px;
+    &--categories {
+      a {
+        color: green;
+        &:hover {
+          color: green;
+          font-weight: bold;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

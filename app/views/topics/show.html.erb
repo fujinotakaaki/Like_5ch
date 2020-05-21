@@ -1,2 +1,22 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<div class="col-md-10 col-md-1">
+  <h3>
+    <%= @topic.title %>
+  </h3>
+
+  <% @responses.each.with_index(1) do |response, idx| %>
+  <div class="responses__show">
+    <h6>
+      <%= idx %>
+      &nbsp;
+      <%= content_tag :span, response.name, class: "responses__show--name" %>
+      &nbsp;
+      <%= response.created_info %>
+      &nbsp;
+      ID:
+      &nbsp;
+      <%= response.token %>
+    </h6>
+    <%= response.body %>
+  </div>
+  <% end %>
+</div>

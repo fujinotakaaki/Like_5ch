@@ -14,15 +14,11 @@ ActiveRecord::Schema.define(version: 2020_05_20_145102) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "categorizations", force: :cascade do |t|
     t.integer "topic_id", null: false
     t.integer "category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "responses", force: :cascade do |t|

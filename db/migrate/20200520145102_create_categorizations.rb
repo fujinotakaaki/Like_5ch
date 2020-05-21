@@ -4,7 +4,7 @@ class CreateCategorizations < ActiveRecord::Migration[5.2]
       t.integer :topic_id, null: false
       t.integer :category_id, null: false
 
-      t.timestamps null: false
+      # t.timestamps null: false
     end
   end
 end

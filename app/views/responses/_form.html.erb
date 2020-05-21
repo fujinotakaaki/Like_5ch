@@ -1,0 +1,17 @@
+<h5>
+  レスを投稿する
+</h5>
+
+<%= form_with( model: response ) do |f| %>
+<div class="form-group">
+  <%= f.text_field :name, class: "form-control", placeholder: '名前（省略可）' %>
+</div>
+
+<div class="form-group">
+  <%= f.text_field :token, class: "form-control", placeholder: 'ID（省略可）' %>
+</div>
+
+<div class="form-group">
+  <%= f.text_field :body, class: "form-control", placeholder: 'コメント内容' %>
+</div>
+<% end %>
