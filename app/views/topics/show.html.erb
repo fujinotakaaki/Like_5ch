@@ -3,20 +3,13 @@
     <%= @topic.title %>
   </h3>
 
-  <% @responses.each.with_index(1) do |response, idx| %>
-  <div class="responses__show">
-    <h6>
-      <%= idx %>
-      &nbsp;
-      <%= content_tag :span, response.name, class: "responses__show--name" %>
-      &nbsp;
-      <%= response.created_info %>
-      &nbsp;
-      ID:
-      &nbsp;
-      <%= response.token %>
-    </h6>
-    <%= response.body %>
+  <div class="responses__index">
+    <% @responses.each.with_index(1) do |response, idx| %>
+    <%= render 'responses/partial', response: response, idx: idx %>
+    <% end %>
   </div>
-  <% end %>
+
+  <div class="responses__show">
+    <%= render 'responses/form', topic_id: @topic.id %>
+  </div>
 </div>

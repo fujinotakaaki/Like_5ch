@@ -3,9 +3,9 @@ class TopicsController < ApplicationController
     keyword = search_params[:keyword]
     @topics = begin
       unless keyword.blank?
-        Topic.where("title LIKE ?", "%#{keyword}%")
+        Topic.where("title LIKE ?", "%#{keyword}%").includes(:categories).order(updated_at: :desc)
       else
-        Topic.all
+        Topic.all.includes(:categories).order(updated_at: :desc)
       end
     end
   end
@@ -15,8 +15,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @response = Response.new(topic_id: params[:id])
     @responses = @topic.responses
-    @response = @topic.responses.new
   end
 
   def update

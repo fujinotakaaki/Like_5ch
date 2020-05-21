@@ -1,4 +1,9 @@
-<%= form_with( model: topic, local: true) do |f| %>
-<%= f.text_field :title %>
-<%= f.submit %>
+<h5>
+  新規スレッド
+</h5>
+
+<%= form_with( model: Topic, local: true) do |f| %>
+<%= f.submit '新規スレッド作成' %>
+<%= f.label :title, 'スレッドタイトル：' %>
+<%= f.text_area :title %>
 <% end %>

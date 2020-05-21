@@ -1,0 +1,14 @@
+<div class="responses__show">
+  <h6>
+    <%= idx %>
+    &nbsp;
+    <%= content_tag :span, response.name, class: "responses__show--name" %>
+    &nbsp;
+    <%= response.created_info %>
+    &nbsp;
+    ID:
+    &nbsp;
+    <%= response.token %>
+  </h6>
+  <%= response.body %>
+</div>
