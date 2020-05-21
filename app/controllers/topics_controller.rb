@@ -11,6 +11,9 @@ class TopicsController < ApplicationController
   end
 
   def create
+    @topic = Topic.new(create_params)
+    @topic.save
+    redirect_to topic_path(@topic)
   end
 
   def show
@@ -24,7 +27,15 @@ class TopicsController < ApplicationController
 
   private
 
+  def create_params
+    params.require(:topic).permit(:title, responses_attributes: %i(name body))
+  end
+
   def search_params
+    begin
     params.require(:search).permit(:keyword)
+  rescue
+    { keyword: "" }
+  end
   end
 end

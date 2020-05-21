@@ -2,8 +2,11 @@
   新規スレッド
 </h5>
 
-<%= form_with( model: Topic, local: true) do |f| %>
+<%= form_with( model: @topic, local: true ) do |f| %>
+<%= f.text_field :title, placeholder: 'スレッドタイトル' %>
+<%= f.fields_for :responses do |r| %>
+<%= r.text_field :name, placeholder: '名前（省略可）' %>
+<%= r.text_area :body, placeholder: 'コメント内容' %>
+<% end %>
 <%= f.submit '新規スレッド作成' %>
-<%= f.label :title, 'スレッドタイトル：' %>
-<%= f.text_area :title %>
 <% end %>

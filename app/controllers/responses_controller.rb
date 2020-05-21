@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
   def create
     topic = Topic.find(params[:topic_id])
-    @response = topic.responses.new(create_params)
+    @response = topic.responses.build(create_params)
     if @response.valid?
       @response.token = session[:token] ||= SecureRandom.alphanumeric
       @response.name = '名無しさん' if @response.name.blank?

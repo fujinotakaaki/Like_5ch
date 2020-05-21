@@ -2,7 +2,7 @@
   レスを投稿する
 </h5>
 
-<%= form_with( model: Response, url: topic_response_path( topic_id ) ) do |f| %>
+<%= form_with( model: Response.new, url: topic_response_path( topic_id ) ) do |f| %>
 <div class="form-group">
   <%= f.text_field :name, class: "form-control", placeholder: '名前（省略可）' %>
 </div>

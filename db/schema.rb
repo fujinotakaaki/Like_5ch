@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_145102) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.integer "categorizations_count", default: 0
   end
 
   create_table "categorizations", force: :cascade do |t|
