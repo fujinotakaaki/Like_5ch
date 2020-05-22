@@ -1,6 +1,6 @@
-<%= render "devise/shared/error_messages", resource: resource %>
 <div class="devises__form--block">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= content_tag :p, flash[:alert], class: "red" if flash.any? %>
 
   <div class="form-group">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: 'Eメール' %>

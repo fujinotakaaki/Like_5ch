@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :topics, through: :categorizations, source: :topic
 
   # 名前と登録レス数の表示書式

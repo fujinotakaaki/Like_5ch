@@ -2,7 +2,7 @@
   レスを投稿する
 </h5>
 
-<%= form_with( model: Response.new, url: topic_response_path( topic_id ) ) do |f| %>
+<%= form_with( model: response, url: topic_response_path( response.topic_id ) ) do |f| %>
 <div class="form-group">
   <%= f.text_field :name, class: "form-control", placeholder: '名前（省略可）' %>
 </div>
@@ -11,7 +11,7 @@
   <%= f.text_area :body, class: "form-control", placeholder: 'コメント内容' %>
 </div>
 
-<div class="form-group" style="text-align: right;">
+<p style="text-align: right;">
   <%= f.submit '書き込む', class: "btn btn-carbon" %>
-</div>
+</p>
 <% end %>

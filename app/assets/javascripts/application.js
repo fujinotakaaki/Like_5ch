@@ -37,8 +37,14 @@ $(document).off().on('turbolinks:load', function() {
 });
 
 
-// 検索欄のキーワード存在の判定
-const formCheck = () => !!$('#search\\[keyword\\]').val();
+// 指定したフォームが空欄または空文字を判定
+function formCheck(identifier) {
+  let regex = /\S/;
+  let targetText = $(identifier).val();
+  let judge = !!targetText && regex.test(targetText);
+  if (!judge) alert("空欄または空白のみは無効です");
+  return judge;
+}
 
 
 // 新規登録・ログインフォームのエラーウィンドウ操作

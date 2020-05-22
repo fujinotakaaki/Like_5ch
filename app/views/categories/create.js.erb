@@ -1,0 +1,6 @@
+<% if @category.errors.any? %>
+alert(`<%= @category.errors.full_messages.join("\n") %>`);
+<% else %>
+$('#category_name').val("");
+$('.categories__index--bord').append(`<%= j( link_to " / #{@category.name_with_categorizations_count}", category_path( @category ) ) %>`);
+<% end %>

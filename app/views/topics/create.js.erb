@@ -1,5 +1,6 @@
 <% if @topic.errors.any? %>
 alert("入力にエラーがあります。");
 <% else %>
-window.location.replace("<%= topic_path( @topic ) %>");
+// スレの作成に成功した場合は詳細ページへ遷移
+(url => location.href = url)("<%= topic_path( @topic ) %>");
 <% end %>

@@ -1,7 +1,7 @@
 <% if @response.errors.any? %>
 alert('レス内容にエラーがあります。');
 <% else %>
-$('#response_name').val("");
+$('#response_name').val("<%= current_user&.name %>");
 $('#response_body').val("");
 $('.responses__index').append(`<%= j( render 'responses/partial', response: @response, idx: @idx ) %>`);
 <% end %>
