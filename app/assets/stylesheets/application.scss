@@ -39,6 +39,10 @@
   @extend .has-error;
 }
 
+.red {
+  color: red;
+}
+
 .btn {
   &-carbon {
     color: whitesmoke;

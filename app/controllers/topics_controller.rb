@@ -1,13 +1,9 @@
 class TopicsController < ApplicationController
   def index
     keyword = search_params[:keyword]
-    @topics = begin
-      unless keyword.blank?
-        Topic.where("title LIKE ?", "%#{keyword}%").includes(:categories).order(updated_at: :desc)
-      else
-        Topic.all.includes(:categories).order(updated_at: :desc)
-      end
-    end
+    # 検索ワードが存在しない場合はトップへ戻す
+    redirect_to root_path if keyword.blank?
+    @topics = Topic.where("title LIKE ?", "%#{keyword}%").includes(:categories).order(updated_at: :desc)
   end
 
   def create
@@ -45,7 +41,7 @@ class TopicsController < ApplicationController
     begin
       params.require(:search).permit(:keyword)
     rescue
-      { keyword: "" }
+      nil
     end
   end
 end

@@ -18,11 +18,7 @@
 //= require_tree .
 
 
-function closeErrorWindow() {
-  $("#error_explanation").fadeOut();
-}
-
-
+// ヘッダーをページトップに固定
 $(document).off().on('turbolinks:load', function() {
   let $win = $(window);
   let $header = $('.application__trackingHeader');
@@ -39,3 +35,11 @@ $(document).off().on('turbolinks:load', function() {
     startPos = value;
   });
 });
+
+
+// 検索欄のキーワード存在の判定
+const formCheck = () => !!$('#search\\[keyword\\]').val();
+
+
+// 新規登録・ログインフォームのエラーウィンドウ操作
+const closeErrorWindow = () => $("#error_explanation").fadeOut();
