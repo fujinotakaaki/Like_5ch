@@ -3,8 +3,7 @@ class TopicsController < ApplicationController
     @keyword = search_params[:keyword]
     # 検索ワードが存在しない場合はトップへ戻す
     redirect_to root_path if @keyword.blank?
-    @topics = Topic.joins(:responses).where("title LIKE ? or body LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
-    .includes(:categories).order(updated_at: :desc).distinct
+    @topics = Topic.search_by(@keyword)
   end
 
   def create
@@ -29,9 +28,11 @@ class TopicsController < ApplicationController
       responses_attributes: %i(name body),
       categorizations_attributes: %i(category_id)
     )
+    # 匿名者のIDの付与（セッションから取得）
     if raw_params[:responses_attributes][?0][:token].blank?
       raw_params[:responses_attributes][?0][:token] = session[:token] ||= SecureRandom.alphanumeric
     end
+    # 名前の付与
     if raw_params[:responses_attributes][?0][:name].blank?
       raw_params[:responses_attributes][?0][:name] =  '名無しさん'
     end

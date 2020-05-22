@@ -1,6 +1,6 @@
 <%= form_with( url: topics_path, method: :get, local: true ) do |f| %>
 <div class="input-group">
-  <%= f.text_field "search[keyword]", class: "form-control", placeholder: "キーワードを入力" %>
+  <%= f.text_field "search[keyword]", value: @keyword, class: "form-control", placeholder: "キーワードを入力" %>
   <span class="input-group-btn">
     <%= f.submit '検索', class: "btn btn-carbon", onclick: "return formCheck(this);" %>
   </span>
