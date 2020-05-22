@@ -5,12 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# ユーザ作成
 User.create(
   email: 'test@user.com',
-  name: 'test_user',
+  name: Faker::Name.name,
   password: 'password'
 )
 
+
+# スレの作成
 titles = %W(
   10万円の使いみち\ 家庭で悲鳴
   コロナ自粛はいつまで続くのか？
@@ -19,38 +23,42 @@ titles = %W(
   PS5の値段いくらになる？
   冷凍食品は自然解凍OKじゃなくても食べて大丈夫？？
   3府県で解除へ首都圏など継続
+  ヤフー、HIKAKINと新型コロナ募金窓口を開設　医療従事者を支援
+  3Dプリンタで作る人工呼吸器、経産省が補助金で支援
 )
 titles.each do |content|
   Topic.create(title: content)
 end
 
-ids = Topic.pluck(:id)
-100.times do |i|
+
+# レスの作成
+topic_id_arr = Topic.pluck(:id)
+300.times do |i|
   Response.create(
-    topic_id: ids.sample,
+    topic_id: topic_id_arr.sample,
     token: SecureRandom.alphanumeric,
     name: "名無しさん#{i}",
-    body: SecureRandom.alphanumeric,
+    body: Faker::Lorem.sentence
   )
 end
 
-categories = %w(
-  ゲーム
-  調理
-  パソコン
-  家具
-  受験
-  就職
-  コロナ
-  安倍晋三
-)
-categories.each do |content|
-  Category.create(name: content)
-end
 
-Category.pluck(:id).each do |category_id|
-  Categorization.create(
-    topic_id: ids.sample,
-    category_id: category_id
-  )
+# カテゴリの作成
+category_count = 20
+Faker::Lorem.unique.clear
+category_count.times do
+  Category.create(name: Faker::Lorem.unique.word)
+end
+category_id_arr = Category.pluck(:id)
+
+
+# スレにカテゴリの登録
+topic_id_arr.each do |topic_id|
+  arr = [*category_id_arr.sample(rand(1..6))]
+  arr.each do |category_id|
+    Categorization.create(
+      topic_id: topic_id,
+      category_id: category_id
+    )
+  end
 end

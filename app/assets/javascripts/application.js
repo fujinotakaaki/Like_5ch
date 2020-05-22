@@ -21,3 +21,21 @@
 function closeErrorWindow() {
   $("#error_explanation").fadeOut();
 }
+
+
+$(document).off().on('turbolinks:load', function() {
+  let $win = $(window);
+  let $header = $('.application__trackingHeader');
+  let headerHeight = $header.outerHeight();
+  let startPos = 0;
+
+  $win.off().on('load scroll', function() {
+    let value = $(this).scrollTop();
+    if ( value > startPos && value > headerHeight ) {
+      $header.css('top', '-' + headerHeight + 'px');
+    } else {
+      $header.css('top', '0');
+    }
+    startPos = value;
+  });
+});
