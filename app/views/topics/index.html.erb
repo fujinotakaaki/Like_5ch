@@ -1,4 +1,14 @@
 <div class="col-md-10 col-md-offset-1">
+  <p class="topics__artticle">
+    検索ワード：<%= @keyword %>
+    <br>
+    該当件数　：<%= @topics.size %>件
+  </p>
+
+  <% if @topics.empty? %>
+  該当するスレは見つかりませんでした。
+  <% end %>
+
   <% @topics.each do |topic| %>
   <%= render 'topics/partial', topic: topic %>
   <% end %>
