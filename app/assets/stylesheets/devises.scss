@@ -1,0 +1,36 @@
+.devises {
+  &__form {
+    &--block {
+      background-color: #fff;
+      padding: 40px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 50%;
+    }
+  }
+  &__alert {
+    &--close {
+      color: #555;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: thin solid #999;
+      border-radius: 5px;
+      &:hover {
+        text-decoration: none;
+        color: #999;
+        border: thin solid #555;
+      }
+    }
+    &--window {
+      position: absolute;
+      padding: 30px;
+      background-color: #ccffcc;
+      border: 2px solid #000;
+      border-radius: 8px;
+      transform: translate(-50%,5%);
+      left: 50%;
+      z-index: 5;
+    }
+  }
+}

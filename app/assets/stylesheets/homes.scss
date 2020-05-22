@@ -6,6 +6,7 @@
   &__img {
     padding-top: 50px;
     padding-bottom: 50px;
-    padding-left: calc(50% - 45px);
+    margin-left: 50%;
+    transform: translate(-50%,0);
   }
 }
