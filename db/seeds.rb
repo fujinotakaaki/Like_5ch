@@ -16,7 +16,7 @@ titles = %W(
   目玉焼きに最適なのは醤油？ソース？塩？
   PS5の値段いくらになる？
   冷凍食品は自然解凍OKじゃなくても食べて大丈夫？？
-  3府県で解除へ首都圏など継続
+  3府県で自粛要請解除へ首都圏など継続
   ヤフー、HIKAKINと新型コロナ募金窓口を開設　医療従事者を支援
   3Dプリンタで作る人工呼吸器、経産省が補助金で支援
   プラレールが回転寿司に話題
@@ -28,29 +28,18 @@ end
 
 # レスの作成
 topic_id_arr = Topic.pluck(:id)
-topic_id_arr.each do |i|
-  i.times do
-    Response.create(
-      topic_id: i,
-      token: SecureRandom.alphanumeric,
-      name: "名無しさん#{i}",
-      body: (?a..?z).to_a[0..i].join
-    )
-  end
-end
-
 300.times do |i|
   Response.create(
     topic_id: topic_id_arr.sample,
     token: SecureRandom.alphanumeric,
     name: "名無しさん#{i}",
-    body: Faker::Lorem.sentence
+    body: Faker::Lorem.sentence(word_count: rand(3..10))
   )
 end
 
 
 # カテゴリの作成
-category_count = 20
+category_count = 30
 Faker::Lorem.unique.clear
 category_count.times do
   Category.create(name: Faker::Lorem.unique.word)
@@ -60,7 +49,7 @@ category_id_arr = Category.pluck(:id)
 
 # スレにカテゴリの登録
 topic_id_arr.each do |topic_id|
-  arr = [*category_id_arr.sample(rand(5..18))]
+  arr = [*category_id_arr.sample(rand(4..25))]
   arr.each do |category_id|
     Categorization.create(
       topic_id: topic_id,

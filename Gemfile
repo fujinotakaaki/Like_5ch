@@ -39,8 +39,6 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # ダミーデータ作成ツール
-  gem 'faker'
 end
 
 group :development do
@@ -62,7 +60,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -77,3 +75,5 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 # エラーメッセージの日本語化支援ツール
 gem 'rails-i18n'
+# ダミーデータ作成ツール
+gem 'faker'
