@@ -10,7 +10,7 @@
 
   <% @topics.each do |topic| %>
   <div class="topics__block topics__block--carbon">
-  <%= render 'topics/partial', topic: topic %>
+  <%= render 'topics/partial', topic: topic, categories: topic.categories %>
   </div>
   <% end %>
 

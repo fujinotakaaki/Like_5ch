@@ -3,12 +3,7 @@
     <%= link_to topic.title_with_responses_count, topic_path( topic ) %>
   </h4>
 
-  <h5 class="topics__artticle--categories">
-    <% topic.categories.each do |category| %>
-    <%= link_to category.name, category_path( category ) %>
-    &nbsp;
-    <% end %>
-  </h5>
+  <%= render 'categorizations/show', topic: topic, categories: categories %>
 
   <h5>
     <%= topic.updated_info %>

@@ -4,7 +4,9 @@
     <%= link_to category.name, category_path( category ), class: "categories__index--tag" %>
   </li>
   <% end %>
+  <% if controller_name != 'categories' && action_name == 'show' %>
   <li class="categories__index--li">
-    <%= link_to '[カテゴリ編集]', ?#, style: "font-size: 9px;", remote: true %>
+    <%= link_to '[カテゴリ編集]', edit_topic_categorization_path( topic ), style: "font-size: 9px;", remote: true %>
   </li>
+  <% end %>
 </ul>

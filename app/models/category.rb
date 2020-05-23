@@ -10,9 +10,9 @@ class Category < ApplicationRecord
   end
 
   # 複数レコードの登録
-  def self.save_names(raw_params)
+  def self.save_names(permit_params)
     # 名前情報を取得
-    names_text = raw_params.to_h[:names]
+    names_text = permit_params.to_h[:names]
     # 空白区切りで分割
     names = names_text.split /[[:blank:]]/
     # 各名前を保存（登録済みは除去）

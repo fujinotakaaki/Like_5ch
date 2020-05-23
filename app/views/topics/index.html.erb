@@ -18,7 +18,7 @@
   <% end %>
 
   <% @topics.each do |topic| %>
-  <%= render 'topics/partial', topic: topic %>
+  <%= render 'topics/partial', topic: topic, categories: topic.categories %>
   <% end %>
 
   <p class="topics__artticle" style="text-align: center;">

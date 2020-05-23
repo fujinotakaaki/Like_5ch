@@ -1,0 +1,10 @@
+<ul>
+  <% categorizations.each_with_index do |categorization, idx| %>
+  <%= render 'categorizations/partial', categorization: categorization, idx: idx %>
+  <% end %>
+  <li class="categories__index--li">
+    <%= link_to '[編集完了]', topic_categorization_path( topic ), style: "font-size: 9px;", remote: true %>
+  </li>
+</ul>
+
+<%#= render 'categories/form', create_path: topic_categorization_path(topic.id) %>

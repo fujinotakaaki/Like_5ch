@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :topics, only: %i(index create show update) do
     resource :response, only: %i(create)
+    resource :categorization, only: %i(show edit create destroy)
   end
   resources :categories, only: %i(index create show destroy)
   devise_for :users, skip: :all

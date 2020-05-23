@@ -3,8 +3,8 @@
     <%= @topic.title %>
   </h3>
 
-  <div id="tags">
-    <%= render 'categories/tag', categories: @categories %>
+  <div id="categorizations">
+    <%= render 'categorizations/show', topic: @topic, categories: @categories %>
   </div>
 
   <div class="responses__index">
