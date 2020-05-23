@@ -1,15 +1,27 @@
 <div class="col-md-10 col-md-offset-1">
-  <p class="topics__artticle">
-    検索ワード：<%= @keyword %>
-    <br>
-    該当件数　：<%= @topics.size %>件
-  </p>
-
   <% if @topics.empty? %>
-  該当するスレは見つかりませんでした。
+  <h4>
+    <%= content_tag :b, @keyword %>
+    に一致するスレッドは見つかりませんでした。
+  </h4>
+  <p>
+    検索のヒント:
+  </p>
+  <ul style="margin-left: 1.5em;">
+    <li>キーワードに誤字・脱字がないか確認します。</li>
+    <li>別のキーワードを試してみます。</li>
+    <li>もっと一般的なキーワードに変えてみます。</li>
+  </ul>
+  <p>
+    該当するスレは見つかりませんでした。
+  </p>
   <% end %>
 
   <% @topics.each do |topic| %>
   <%= render 'topics/partial', topic: topic %>
   <% end %>
+
+  <p class="topics__artticle" style="text-align: center;">
+    <%= link_to 'Xちゃんねる', root_path %>
+  </p>
 </div>

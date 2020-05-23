@@ -20,17 +20,17 @@
 
 // ヘッダーをページトップに固定
 $(document).off().on('turbolinks:load', function() {
-  let $win = $(window);
-  let $header = $('.application__trackingHeader');
-  let headerHeight = $header.outerHeight();
+  let win = $(window);
+  let header = $('.application__trackingHeader');
+  let headerHeight = header.outerHeight();
   let startPos = 0;
 
-  $win.off().on('load scroll', function() {
+  win.off().on('load scroll', function() {
     let value = $(this).scrollTop();
     if ( value > startPos && value > headerHeight ) {
-      $header.css('top', '-' + headerHeight + 'px');
+      header.css('top', '-' + headerHeight + 'px');
     } else {
-      $header.css('top', '0');
+      header.css('top', '0');
     }
     startPos = value;
   });
@@ -46,6 +46,8 @@ function formCheck(identifier) {
   return judge;
 }
 
+// 指定したフォームを空にする
+const formClear = identifier => $(identifier).val("");
 
 // 新規登録・ログインフォームのエラーウィンドウ操作
 const closeErrorWindow = () => $("#error_explanation").fadeOut();

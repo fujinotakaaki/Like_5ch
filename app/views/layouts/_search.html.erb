@@ -1,8 +1,12 @@
 <%= form_with( url: topics_path, method: :get, local: true, scope: :search ) do |f| %>
 <div class="input-group">
+  <%= content_tag :span, '', class: "glyphicon glyphicon-remove application__search--clear", aria: { hidden: true }, onclick: "formClear('#search_keyword');" %>
   <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "キーワードを入力" %>
   <span class="input-group-btn">
-    <%= f.submit '検索', class: "btn btn-primary", onclick: "return formCheck('#search_keyword');" %>
+    <%= button_tag class: "btn btn-primary", onclick: "return formCheck('#search_keyword');" do %>
+    <%= content_tag :span, '', class: "glyphicon glyphicon-search", aria: { hidden: true } %>
+    検索
+    <% end %>
   </span>
 </div>
 <% end %>

@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# coding: utf-8
 
 # ユーザ作成
 User.create(
@@ -33,14 +27,25 @@ end
 
 # レスの作成
 topic_id_arr = Topic.pluck(:id)
-300.times do |i|
-  Response.create(
-    topic_id: topic_id_arr.sample,
-    token: SecureRandom.alphanumeric,
-    name: "名無しさん#{i}",
-    body: Faker::Lorem.sentence
-  )
+topic_id_arr.each do |i|
+  i.times do
+    Response.create(
+      topic_id: i,
+      token: SecureRandom.alphanumeric,
+      name: "名無しさん#{i}",
+      body: (?a..?z).to_a[0..i].join
+    )
+  end
 end
+
+# 300.times do |i|
+#   Response.create(
+#     topic_id: topic_id_arr.sample,
+#     token: SecureRandom.alphanumeric,
+#     name: "名無しさん#{i}",
+#     body: Faker::Lorem.sentence
+#   )
+# end
 
 
 # カテゴリの作成
@@ -61,4 +66,11 @@ topic_id_arr.each do |topic_id|
       category_id: category_id
     )
   end
+end
+
+t = Time.zone.now
+i=10**5
+Topic.all.map do |topic|
+  topic.update(updated_at: t-(i*10).second)
+  i -= rand(3..6)*1000
 end

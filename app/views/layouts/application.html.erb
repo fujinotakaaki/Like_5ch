@@ -14,15 +14,15 @@
   <header>
     <div class="container application__trackingHeader">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2 col-md-offset-1">
           <%= image_tag 'Like5chLogo.png', alt: 'トップページロゴ', width: 90 %>
         </div>
-        
-        <div class="col-md-6">
+
+        <div class="col-md-5">
           <%= render 'layouts/search' %>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= link_to 'カテゴリ一覧', categories_path, class: "btn btn-default" %>
           <% if user_signed_in? %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-danger", data: { confirm: 'ログアウトしてよろしいですか？' } %>

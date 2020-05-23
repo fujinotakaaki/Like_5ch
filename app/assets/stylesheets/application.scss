@@ -56,6 +56,23 @@
 
 
 .application {
+  &__search {
+    &--clear {
+      position: absolute;
+      right: 85px;
+      top: 0;
+      bottom: 0;
+      height: 14px;
+      margin: auto;
+      font-size: 14px;
+      cursor: pointer;
+      color: #ddd;
+      z-index: 8;
+      &:hover {
+        color: #aaa;
+      }
+    }
+  }
   &__trackingHeader {
     background-color: #fff;
     left: 0;

@@ -71,3 +71,5 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 # 環境変数を管理
 gem 'dotenv-rails'
+# エラーメッセージの日本語化支援ツール
+gem 'rails-i18n'
