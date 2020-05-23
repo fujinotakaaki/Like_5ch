@@ -1,16 +1,29 @@
 <div class="col-md-10 col-md-offset-1">
+  <h2>
+    カテゴリ：
+    <%= content_tag :span, @category.name, class: "topics__block--body" %>
+  </h2>
+
   <div class="topics__block">
+    <p class="topics__block--headline">
+      <span class="topics__block--body">
+        このカテゴリに関するスレッド
+      </span>
+    </p>
+
     <p class="categories__index--subheadings">
       <% @topics.each.with_index(1) do |topic, idx| %>
       <%= link_to "#{idx}: #{topic.title_with_responses_count}", topic_path( topic ) %>
       <br>
       <% end %>
     </p>
+
+    <%= link_to '新規スレッド作成はこちら', ?#, onclick: 'return scrollBottom();' %>
   </div>
 
   <% @topics.each do |topic| %>
   <div class="topics__block topics__block--carbon">
-  <%= render 'topics/partial', topic: topic, categories: topic.categories %>
+    <%= render 'topics/partial', topic: topic, categories: topic.categories %>
   </div>
   <% end %>
 

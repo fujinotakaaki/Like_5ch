@@ -2,4 +2,4 @@
 // All this logic will automatically be available in application.js.
 
 // タグの除去アクション
-const removeLi = self => $(self).closest('li').fadeOut();
+const removeLi = self => $(self).closest('li').remove();

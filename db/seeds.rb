@@ -10,7 +10,7 @@ User.create(
 
 # スレの作成
 titles = %W(
-  10万円の使いみち\ 家庭で悲鳴
+  10万円の使いみちに家庭で悲鳴
   コロナ自粛はいつまで続くのか？
   お米はハエヌキ派とコシヒカリ派どっち？
   目玉焼きに最適なのは醤油？ソース？塩？
@@ -19,6 +19,7 @@ titles = %W(
   3府県で解除へ首都圏など継続
   ヤフー、HIKAKINと新型コロナ募金窓口を開設　医療従事者を支援
   3Dプリンタで作る人工呼吸器、経産省が補助金で支援
+  プラレールが回転寿司に話題
 )
 titles.each do |content|
   Topic.create(title: content)
@@ -38,14 +39,14 @@ topic_id_arr.each do |i|
   end
 end
 
-# 300.times do |i|
-#   Response.create(
-#     topic_id: topic_id_arr.sample,
-#     token: SecureRandom.alphanumeric,
-#     name: "名無しさん#{i}",
-#     body: Faker::Lorem.sentence
-#   )
-# end
+300.times do |i|
+  Response.create(
+    topic_id: topic_id_arr.sample,
+    token: SecureRandom.alphanumeric,
+    name: "名無しさん#{i}",
+    body: Faker::Lorem.sentence
+  )
+end
 
 
 # カテゴリの作成
@@ -59,7 +60,7 @@ category_id_arr = Category.pluck(:id)
 
 # スレにカテゴリの登録
 topic_id_arr.each do |topic_id|
-  arr = [*category_id_arr.sample(rand(1..6))]
+  arr = [*category_id_arr.sample(rand(5..18))]
   arr.each do |category_id|
     Categorization.create(
       topic_id: topic_id,

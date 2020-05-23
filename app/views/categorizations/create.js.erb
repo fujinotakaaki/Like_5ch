@@ -1,0 +1,8 @@
+<% if @categorizations.empty? %>
+alert(`登録できませんでした。\n登録済みのカテゴリである可能性があります。`);
+<% else %>
+$('#category_names').val("");
+<% @categorizations.each do |categorization| %>
+$('#finish').before(`<%= j( render 'categorizations/partial', categorization: categorization, idx: 1 ) %>`);
+<% end %>
+<% end %>
