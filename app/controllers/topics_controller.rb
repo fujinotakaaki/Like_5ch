@@ -13,7 +13,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @response = Response.new(topic_id: params[:id], name: current_user&.name)
+    @categories = @topic.categories
+    @response = Response.new(name: current_user&.name)
     @responses = @topic.responses
   end
 

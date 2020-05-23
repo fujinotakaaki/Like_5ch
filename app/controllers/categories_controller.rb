@@ -4,8 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(create_params)
-    @category.save
+    @categories = Category.save_names(create_params)
   end
 
   def show
@@ -24,6 +23,6 @@ class CategoriesController < ApplicationController
   private
 
   def create_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:names)
   end
 end

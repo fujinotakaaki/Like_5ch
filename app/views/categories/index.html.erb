@@ -6,15 +6,5 @@
     <% end %>
   </p>
 
-  <div class="categories__index--form">
-    <%= form_with( model: Category.new, class: "form-inline" ) do |f| %>
-    <div class="input-group">
-      <%= content_tag :span, '新規カテゴリ', class: "input-group-addon" %>
-      <%= f.text_field :name, class: "form-control", placeholder: 'カテゴリ名' %>
-      <span class="input-group-btn">
-        <%= f.submit '追加', class: "btn btn-carbon", onclick: "return formCheck('#category_name');" %>
-      </span>
-    </div>
-    <% end %>
-  </div>
+  <%= render 'categories/form', create_path: categories_path %>
 </div>

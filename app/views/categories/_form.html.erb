@@ -1,0 +1,11 @@
+<div class="categories__index--form">
+  <%= form_with( url: create_path, scope: :category, class: "form-inline" ) do |f| %>
+  <div class="input-group">
+    <%= content_tag :span, '新規カテゴリ', class: "input-group-addon" %>
+    <%= f.text_field :names, class: "form-control", placeholder: 'カテゴリ名' %>
+    <span class="input-group-btn">
+      <%= f.submit '追加', class: "btn btn-carbon", onclick: "return formCheck('#category_names');" %>
+    </span>
+  </div>
+  <% end %>
+</div>

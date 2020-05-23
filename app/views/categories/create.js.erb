@@ -1,6 +1,8 @@
-<% if @category.errors.any? %>
-alert(`<%= @category.errors.full_messages.join("\n") %>`);
+<% if @categories.empty? %>
+alert(`登録できませんでした。\n登録済みのカテゴリである可能性があります。`);
 <% else %>
-$('#category_name').val("");
-$('.categories__index--bord').append(`<%= j( link_to " / #{@category.name_with_categorizations_count}", category_path( @category ) ) %>`);
+$('#category_names').val("");
+<% @categories.each do |category| %>
+$('.categories__index--bord').append(` / <%= j( link_to category.name_with_categorizations_count, category_path( category ) ) %>`);
+<% end %>
 <% end %>

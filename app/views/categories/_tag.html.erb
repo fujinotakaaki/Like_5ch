@@ -1,0 +1,10 @@
+<ul>
+  <% categories.each do |category| %>
+  <li class="categories__index--li">
+    <%= link_to category.name, category_path( category ), class: "categories__index--tag" %>
+  </li>
+  <% end %>
+  <li class="categories__index--li">
+    <%= link_to '[カテゴリ編集]', ?#, style: "font-size: 9px;", remote: true %>
+  </li>
+</ul>
