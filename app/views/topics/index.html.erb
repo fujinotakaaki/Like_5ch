@@ -18,7 +18,8 @@
   </p>
   <% end %>
 
-  <% @topics.each do |topic| %>
+  <% @topics.each_with_index do |topic, idx| %>
+  <%= content_tag :hr unless idx.zero? %>
   <%= render 'topics/partial', topic: topic, categories: topic.categories %>
   <% end %>
 

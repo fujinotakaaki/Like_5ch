@@ -32,4 +32,53 @@
       background-color: #eee;
     }
   }
+  &__show {
+    &--ul2 > li {
+      color: #af0a0f;
+      margin: 0 2.5%;
+      float: left;
+      display: inline-block;
+      list-style: none;
+      width: 45%;
+      text-align: center;
+    }
+    &--ul3 > li {
+      list-style: none;
+      float: left;
+      width: 30%;
+      margin: 1% 1.66% 0;
+      background-color: #fff;
+      a {
+        display: block;
+        border: thin solid #000;
+        width: 100%;
+        text-align: center;
+        color: inherit;
+        &:hover {
+          color: inherit;
+          text-decoration: none;
+          border-color: #aaa;
+        }
+      }
+    }
+    &--ul4 > li {
+      list-style: none;
+      float: left;
+      width: 23%;
+      margin: 1% 1% 0;
+      background-color: #fff;
+      a {
+        display: block;
+        border: thin solid #000;
+        width: 100%;
+        text-align: center;
+        color: inherit;
+        &:hover {
+          color: inherit;
+          text-decoration: none;
+          border-color: #aaa;
+        }
+      }
+    }
+  }
 }

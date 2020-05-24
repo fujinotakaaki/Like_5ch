@@ -15,10 +15,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @categories = @topic.categories
     @response = Response.new(topic_id: @topic.id, name: current_user&.name)
-    @responses = @topic.responses
-  end
-
-  def update
+    @page = params[:page].to_i
+    @responses = @topic.responses.page(@page)
+    @start_index = @topic.start_index(@page)
   end
 
   private

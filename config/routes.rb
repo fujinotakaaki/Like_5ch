@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :topics, only: %i(index create show update) do
+  resources :topics, only: %i(index create show) do
     resource :response, only: %i(create)
     resource :categorization, only: %i(show edit create destroy)
   end

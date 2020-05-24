@@ -24,6 +24,12 @@
    box-sizing: border-box;
  }
 
+ .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
  body {
    background-color: #f5f5ff;
  }
@@ -34,6 +40,9 @@
    background-color: #fff;
  }
 
+hr {
+  margin: 5px 0;
+}
 
 .field_with_errors {
   @extend .has-error;

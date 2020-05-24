@@ -4,15 +4,60 @@
     <%= @topic.title %>
   </h3>
 
+  <ul class="clearfix topics__show--ul2">
+    <li>
+      <%= @topic.responses_count %>
+      コメント
+    </li>
+    <li>
+      <%= @topic.span %>
+    </li>
+  </ul>
+
+  <hr>
+
+  <ul class="clearfix topics__show--ul3">
+    <li>
+      <%= link_to '全部', topic_path( @topic, page: -2 ) %>
+    </li>
+    <li>
+      <%= link_to '1-100', topic_path( @topic, page: 0 ) %>
+    </li>
+    <li>
+      <%= link_to '最新50', topic_path( @topic, page: -1 ) %>
+    </li>
+  </ul>
+
+  <hr>
+
   <div id="categorizations">
     <%= render 'categorizations/show', topic: @topic, categories: @categories %>
   </div>
 
   <div class="responses__index">
-    <% @responses.each.with_index(1) do |response, idx| %>
+    <% @responses.each.with_index( @start_index ) do |response, idx| %>
     <%= render 'responses/partial', response: response, idx: idx %>
     <% end %>
   </div>
+
+  <hr>
+
+  <ul class="clearfix topics__show--ul4">
+    <li>
+      <%= link_to '全部', topic_path( @topic, page: -2 ) %>
+    </li>
+    <li>
+      <%= link_to '前100', before_topic_path( @topic, page: @page ) %>
+    </li>
+    <li>
+      <%= link_to '次100', next_topic_path( @topic, page: @page ) %>
+    </li>
+    <li>
+      <%= link_to '最新50', topic_path( @topic, page: -1 ) %>
+    </li>
+  </ul>
+
+  <hr>
 
   <div class="responses__show">
     <%= render 'responses/form', response: @response %>
