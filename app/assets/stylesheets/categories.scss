@@ -66,4 +66,10 @@
       }
     }
   }
+  &__show {
+    &--separator {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
 }

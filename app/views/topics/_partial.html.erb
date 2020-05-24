@@ -5,8 +5,24 @@
 
   <%= render 'categorizations/show', topic: topic, categories: categories %>
 
+  <% if controller_name == 'categories' && action_name == 'show' %>
+    <% if topic.responses_count < 6 %>
+      <% topic.responses.each_with_index do |response, idx| %>
+        <%= render 'responses/partial', response: response, idx: idx+1 %>
+      <% end %>
+    <% else %>
+      <%= render 'responses/partial', response: topic.responses.first, idx: 1 %>
+      <p class="categories__show--separator">
+        &#xFE19;
+      </p>
+      <% topic.responses.last(4).each.with_index( topic.responses_count - 4 + 1 ) do |response, idx| %>
+        <%= render 'responses/partial', response: response, idx: idx %>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <h5>
-    最終更新日：
+    最終更新日時：
     <%= topic.updated_info %>
   </h5>
 </div>

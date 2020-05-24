@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @topics = @category.topics.order(updated_at: :desc).includes(:categories)
+    @topics = @category.topics.order(updated_at: :desc).includes(:categories, :responses)
     @topic = Topic.new
     @topic.responses.build(name: current_user&.name)
     @topic.categorizations.build(category_id: @category.id)
