@@ -7,5 +7,11 @@
     <% end %>
   </p>
 
+  <% if user_signed_in? %>
+  <p style="text-align: right;">
+    <%= link_to '整理',  categories_path, method: :delete, class: "btn btn-danger", data: { confirm: '未使用のカテゴリを削除しますか？' } %>
+  </p>
+  <% end %>
+
   <%= render 'categories/form', create_path: categories_path %>
 </div>

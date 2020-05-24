@@ -5,6 +5,11 @@
 
   <%= render 'categorizations/show', topic: topic, categories: categories %>
 
+  <h5>
+    最終更新日時：
+    <%= topic.updated_info %>
+  </h5>
+
   <% if controller_name == 'categories' && action_name == 'show' %>
     <% if topic.responses_count < 6 %>
       <% topic.responses.each_with_index do |response, idx| %>
@@ -20,9 +25,4 @@
       <% end %>
     <% end %>
   <% end %>
-
-  <h5>
-    最終更新日時：
-    <%= topic.updated_info %>
-  </h5>
 </div>

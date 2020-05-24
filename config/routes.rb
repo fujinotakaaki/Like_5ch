@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     resource :response, only: %i(create)
     resource :categorization, only: %i(show edit create destroy)
   end
-  resources :categories, only: %i(index create show destroy)
+  delete 'categories', to: 'categories#destroy'
+  resources :categories, only: %i(index create show)
   devise_for :users, skip: :all
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new', as: 'new_user_session'

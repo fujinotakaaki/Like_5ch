@@ -1,6 +1,10 @@
 <% provide(:title, 'トップ') %>
 <div class="col-md-6 col-md-offset-3">
-  <%= image_tag 'Like5chLogo.png', alt: 'トップページロゴ', class: "homes__img" %>
+  <%= image_tag 'BigLogo.png', alt: 'トップページロゴ', class: "homes__img" %>
 
   <%= render 'layouts/search' %>
+
+  <p class="homes__categories--p">
+    <%= link_to 'カテゴリ一覧', categories_path %>
+  </p>
 </div>

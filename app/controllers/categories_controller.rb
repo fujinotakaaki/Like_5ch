@@ -16,8 +16,8 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    categories = Category.whrere(categorizations_count: 0)
-    categories.dellete_all
+    Category.where(categorizations_count: 0).delete_all
+    redirect_to categories_path
   end
 
   private
